@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Soft Glow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0284c7" flood-opacity="0.25"/>
+    </filter>
+    
+    <!-- Primary P Blue Gradient -->
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+
+    <!-- Magenta Top Leaf Sheet -->
+    <linearGradient id="leafMagenta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+
+    <!-- Amber Gold Middle Leaf Sheet -->
+    <linearGradient id="leafAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Cyan Blue Bottom Leaf Sheet -->
+    <linearGradient id="leafCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Inner Document Gradient -->
+    <linearGradient id="docGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <!-- 3 Fanning Paper Sheets on Left -->
+    <!-- Sheet 1: Magenta (Top) -->
+    <path d="M 210 200 C 180 200 150 215 136 230 C 146 255 180 270 216 270 C 235 250 235 220 210 200 Z" fill="url(#leafMagenta)"/>
+
+    <!-- Sheet 2: Gold (Middle) -->
+    <path d="M 200 235 C 160 235 125 255 110 278 C 122 305 162 320 205 315 C 220 290 220 260 200 235 Z" fill="url(#leafAmber)"/>
+
+    <!-- Sheet 3: Cyan (Bottom) -->
+    <path d="M 195 285 C 148 290 115 320 105 348 C 122 375 168 385 212 372 C 222 342 215 310 195 285 Z" fill="url(#leafCyan)"/>
+
+    <!-- Main Stylized Letter P -->
+    <path d="M 200 80 L 330 80 C 395 80 440 125 440 190 C 440 255 395 300 330 300 L 265 300 L 255 390 C 252 415 240 435 220 442 C 200 448 180 436 175 410 L 175 105 C 175 91 186 80 200 80 Z" fill="url(#pGrad)"/>
+
+    <!-- White Document Inside P Loop -->
+    <g transform="translate(230, 115)">
+      <!-- Document Outline with Folded Corner -->
+      <path d="M 12 0 L 80 0 L 115 35 L 115 125 C 115 132 109 138 102 138 L 12 138 C 5 138 0 132 0 125 L 0 12 C 0 5 5 0 12 0 Z" fill="url(#docGrad)"/>
+      
+      <!-- Folded Dog-Ear Corner -->
+      <path d="M 80 0 L 80 35 L 115 35 Z" fill="#cbd5e1"/>
+      <path d="M 80 0 L 80 30 C 80 33 82 35 85 35 L 115 35 Z" fill="#94a3b8"/>
+
+      <!-- Text Lines on Document -->
+      <rect x="20" y="45" width="55" height="10" rx="5" fill="#0284c7"/>
+      <rect x="20" y="65" width="75" height="8" rx="4" fill="#3b82f6"/>
+      <rect x="20" y="83" width="60" height="8" rx="4" fill="#38bdf8"/>
+    </g>
+  </g>
+</svg>
