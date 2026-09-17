@@ -10,7 +10,10 @@ import {
   PaymentStatus,
 } from '../types';
 
-const API_BASE = '/api';
+const customApiUrl = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL
+  ? String(import.meta.env.VITE_API_URL).replace(/\/$/, '')
+  : '';
+const API_BASE = customApiUrl ? `${customApiUrl}/api` : '/api';
 
 function getAuthHeaders(): HeadersInit {
   const token = localStorage.getItem('printflow_token');
@@ -21,16 +24,49 @@ function getAuthHeaders(): HeadersInit {
 }
 
 async function handleResponse<T>(res: Response): Promise<T> {
+  const contentType = res.headers.get('content-type') || '';
+  const isJson = contentType.includes('application/json');
+
   if (!res.ok) {
-    let errorMsg = 'An unexpected error occurred';
-    try {
-      const data = await res.json();
-      errorMsg = data.error || errorMsg;
-    } catch {
-      errorMsg = res.statusText || errorMsg;
+    let errorMsg = '';
+    if (isJson) {
+      try {
+        const data = await res.json();
+        errorMsg = data.error || data.message || '';
+      } catch {
+        // ignore parse error
+      }
+    } else {
+      try {
+        const text = await res.text();
+        // If response is an HTML page (like 502/404 from proxy or static host), don't dump raw HTML tags
+        if (text && !text.includes('<!DOCTYPE') && !text.includes('<html')) {
+          errorMsg = text.slice(0, 180);
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    if (!errorMsg) {
+      if (res.status === 404) {
+        errorMsg = 'API endpoint not found (404). Please ensure the backend server is running and accessible.';
+      } else if (res.status === 502 || res.status === 503) {
+        errorMsg = `Server temporarily unavailable (${res.status} Bad Gateway). The container backend may still be starting up or restarting.`;
+      } else if (res.status === 500) {
+        errorMsg = 'Internal server error (500). Please check server logs or verify your input values.';
+      } else {
+        errorMsg = res.statusText || `Request failed with status ${res.status}`;
+      }
     }
     throw new Error(errorMsg);
   }
+
+  // Guard against static web servers returning 200 index.html for unknown API routes
+  if (!isJson && contentType.includes('text/html')) {
+    throw new Error('API server returned HTML instead of JSON. The backend server might not be running on this hosted port.');
+  }
+
   return res.json();
 }
 

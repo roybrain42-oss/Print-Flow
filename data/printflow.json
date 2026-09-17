@@ -218,6 +218,114 @@
       "id": "tnt-1789424429186-xl8nfl",
       "created_at": "2026-09-14T22:20:29.186Z",
       "updated_at": "2026-09-14T22:20:29.186Z"
+    },
+    {
+      "slug": "mps",
+      "name": "MPS",
+      "owner_name": "Effah",
+      "email": "mps123@gmail.com",
+      "phone": "0535969186",
+      "location": "Sunyani",
+      "address": "ploat A11",
+      "description": "special printing",
+      "logo_url": "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80",
+      "status": "active",
+      "plan_id": "free",
+      "settings": {
+        "currency": "GHS",
+        "currency_symbol": "GH₵",
+        "operating_hours": "Mon–Sat: 8:00 AM – 7:00 PM",
+        "pay_at_shop_enabled": true,
+        "online_payment_enabled": false,
+        "payment_provider": "paystack",
+        "document_retention_days": 14,
+        "max_file_size_mb": 25,
+        "allow_notes": true
+      },
+      "id": "tnt-1789641587683-bjstg3",
+      "created_at": "2026-09-17T10:39:47.683Z",
+      "updated_at": "2026-09-17T10:39:47.683Z"
+    },
+    {
+      "slug": "acme-print",
+      "name": "Acme Print",
+      "owner_name": "John Doe",
+      "email": "testacme@example.com",
+      "phone": "+233201234567",
+      "location": "Ghana",
+      "address": "",
+      "description": "Digital and offset printing services",
+      "logo_url": "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80",
+      "status": "active",
+      "plan_id": "free",
+      "settings": {
+        "currency": "GHS",
+        "currency_symbol": "GH₵",
+        "operating_hours": "Monday – Saturday: 8:00 AM – 7:00 PM",
+        "pay_at_shop_enabled": true,
+        "online_payment_enabled": false,
+        "payment_provider": "paystack",
+        "document_retention_days": 14,
+        "max_file_size_mb": 25,
+        "allow_notes": true
+      },
+      "id": "tnt-1789641983457-rjs3oh",
+      "created_at": "2026-09-17T10:46:23.457Z",
+      "updated_at": "2026-09-17T10:46:23.457Z"
+    },
+    {
+      "slug": "production-press",
+      "name": "Production Press",
+      "owner_name": "Sarah Mensah",
+      "email": "sarah.prod@example.com",
+      "phone": "+233550001122",
+      "location": "Ghana",
+      "address": "",
+      "description": "Digital and offset printing services",
+      "logo_url": "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80",
+      "status": "active",
+      "plan_id": "free",
+      "settings": {
+        "currency": "GHS",
+        "currency_symbol": "GH₵",
+        "operating_hours": "Monday – Saturday: 8:00 AM – 7:00 PM",
+        "pay_at_shop_enabled": true,
+        "online_payment_enabled": false,
+        "payment_provider": "paystack",
+        "document_retention_days": 14,
+        "max_file_size_mb": 25,
+        "allow_notes": true
+      },
+      "id": "tnt-1789642217606-6qev16",
+      "created_at": "2026-09-17T10:50:17.606Z",
+      "updated_at": "2026-09-17T10:50:17.606Z"
+    },
+    {
+      "slug": "verified-press",
+      "name": "Verified Press",
+      "owner_name": "Kwame Verified",
+      "email": "kwame.ver@example.com",
+      "phone": "+233240003344",
+      "location": "Ghana",
+      "address": "",
+      "description": "Digital and offset printing services",
+      "logo_url": "https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80",
+      "status": "active",
+      "plan_id": "free",
+      "settings": {
+        "currency": "GHS",
+        "currency_symbol": "GH₵",
+        "operating_hours": "Monday – Saturday: 8:00 AM – 7:00 PM",
+        "pay_at_shop_enabled": true,
+        "online_payment_enabled": false,
+        "payment_provider": "paystack",
+        "document_retention_days": 14,
+        "max_file_size_mb": 25,
+        "allow_notes": true
+      },
+      "id": "tnt-1789642260436-7mclu4",
+      "created_at": "2026-09-17T10:51:00.436Z",
+      "updated_at": "2026-09-17T10:51:00.436Z"
     }
   ],
   "users": [
@@ -340,6 +448,54 @@
       "id": "usr-1789425006939-4s7e0o",
       "created_at": "2026-09-14T22:30:06.939Z",
       "updated_at": "2026-09-14T22:30:06.939Z"
+    },
+    {
+      "tenant_id": "tnt-1789641587683-bjstg3",
+      "role": "owner",
+      "name": "Effah",
+      "email": "mps123@gmail.com",
+      "password_hash": "$2b$10$9IBGW1MHJRM9EdN.RBBmke3zNMMpzAEOuB0PwM0iMatEUBwyfsw0m",
+      "phone": "0535969186",
+      "status": "active",
+      "id": "usr-1789641587829-c72vos",
+      "created_at": "2026-09-17T10:39:47.829Z",
+      "updated_at": "2026-09-17T10:39:47.829Z"
+    },
+    {
+      "tenant_id": "tnt-1789641983457-rjs3oh",
+      "role": "owner",
+      "name": "John Doe",
+      "email": "testacme@example.com",
+      "password_hash": "$2b$10$xx8Sp26TbQhVDCuB8lEXKu5lMA38u6wt9pJyyLi4bw/NUq/DMnjo6",
+      "phone": "+233201234567",
+      "status": "active",
+      "id": "usr-1789641983567-pwrz2v",
+      "created_at": "2026-09-17T10:46:23.567Z",
+      "updated_at": "2026-09-17T10:46:23.567Z"
+    },
+    {
+      "tenant_id": "tnt-1789642217606-6qev16",
+      "role": "owner",
+      "name": "Sarah Mensah",
+      "email": "sarah.prod@example.com",
+      "password_hash": "$2b$10$JCQmF/VHhqTouXspIYRRtOuLBjYEgPdkQbXq3ila5OGaGCcBIt7WK",
+      "phone": "+233550001122",
+      "status": "active",
+      "id": "usr-1789642217740-55r6ra",
+      "created_at": "2026-09-17T10:50:17.740Z",
+      "updated_at": "2026-09-17T10:50:17.740Z"
+    },
+    {
+      "tenant_id": "tnt-1789642260436-7mclu4",
+      "role": "owner",
+      "name": "Kwame Verified",
+      "email": "kwame.ver@example.com",
+      "password_hash": "$2b$10$LZn3zkFl7vOsSX/DwVUUGeJnDdl2uNsLarOy9fuQ981qmvPSTL8O.",
+      "phone": "+233240003344",
+      "status": "active",
+      "id": "usr-1789642260563-itqc00",
+      "created_at": "2026-09-17T10:51:00.563Z",
+      "updated_at": "2026-09-17T10:51:00.563Z"
     }
   ],
   "services": [
@@ -639,6 +795,138 @@
       "is_active": true,
       "id": "srv-1789424429312-hldw3x",
       "created_at": "2026-09-14T22:20:29.312Z"
+    },
+    {
+      "tenant_id": "tnt-1789641587683-bjstg3",
+      "name": "A4 Black & White Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 0.5,
+      "description": "Standard monochrome 80gsm printing",
+      "is_active": true,
+      "id": "srv-1789641587830-d055d8",
+      "created_at": "2026-09-17T10:39:47.830Z"
+    },
+    {
+      "tenant_id": "tnt-1789641587683-bjstg3",
+      "name": "A4 Colour Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 2,
+      "description": "Full color digital laser print",
+      "is_active": true,
+      "id": "srv-1789641587831-ve4ybk",
+      "created_at": "2026-09-17T10:39:47.831Z"
+    },
+    {
+      "tenant_id": "tnt-1789641587683-bjstg3",
+      "name": "Plastic Comb Binding",
+      "category": "finishing",
+      "unit_type": "per_document",
+      "price": 8,
+      "description": "Comb binding with clear cover",
+      "is_active": true,
+      "id": "srv-1789641587831-tad0nl",
+      "created_at": "2026-09-17T10:39:47.831Z"
+    },
+    {
+      "tenant_id": "tnt-1789641983457-rjs3oh",
+      "name": "A4 Black & White Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 0.5,
+      "description": "Standard monochrome 80gsm printing",
+      "is_active": true,
+      "id": "srv-1789641983568-5f51pq",
+      "created_at": "2026-09-17T10:46:23.568Z"
+    },
+    {
+      "tenant_id": "tnt-1789641983457-rjs3oh",
+      "name": "A4 Colour Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 2,
+      "description": "Full color digital laser print",
+      "is_active": true,
+      "id": "srv-1789641983569-2m4daf",
+      "created_at": "2026-09-17T10:46:23.569Z"
+    },
+    {
+      "tenant_id": "tnt-1789641983457-rjs3oh",
+      "name": "Plastic Comb Binding",
+      "category": "finishing",
+      "unit_type": "per_document",
+      "price": 8,
+      "description": "Comb binding with clear cover",
+      "is_active": true,
+      "id": "srv-1789641983570-ofmkp2",
+      "created_at": "2026-09-17T10:46:23.570Z"
+    },
+    {
+      "tenant_id": "tnt-1789642217606-6qev16",
+      "name": "A4 Black & White Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 0.5,
+      "description": "Standard monochrome 80gsm printing",
+      "is_active": true,
+      "id": "srv-1789642217741-bt5yqu",
+      "created_at": "2026-09-17T10:50:17.741Z"
+    },
+    {
+      "tenant_id": "tnt-1789642217606-6qev16",
+      "name": "A4 Colour Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 2,
+      "description": "Full color digital laser print",
+      "is_active": true,
+      "id": "srv-1789642217742-xt94ss",
+      "created_at": "2026-09-17T10:50:17.742Z"
+    },
+    {
+      "tenant_id": "tnt-1789642217606-6qev16",
+      "name": "Plastic Comb Binding",
+      "category": "finishing",
+      "unit_type": "per_document",
+      "price": 8,
+      "description": "Comb binding with clear cover",
+      "is_active": true,
+      "id": "srv-1789642217743-sp886p",
+      "created_at": "2026-09-17T10:50:17.743Z"
+    },
+    {
+      "tenant_id": "tnt-1789642260436-7mclu4",
+      "name": "A4 Black & White Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 0.5,
+      "description": "Standard monochrome 80gsm printing",
+      "is_active": true,
+      "id": "srv-1789642260564-ovzbvt",
+      "created_at": "2026-09-17T10:51:00.564Z"
+    },
+    {
+      "tenant_id": "tnt-1789642260436-7mclu4",
+      "name": "A4 Colour Printing",
+      "category": "printing",
+      "unit_type": "per_page",
+      "price": 2,
+      "description": "Full color digital laser print",
+      "is_active": true,
+      "id": "srv-1789642260565-ztgyey",
+      "created_at": "2026-09-17T10:51:00.565Z"
+    },
+    {
+      "tenant_id": "tnt-1789642260436-7mclu4",
+      "name": "Plastic Comb Binding",
+      "category": "finishing",
+      "unit_type": "per_document",
+      "price": 8,
+      "description": "Comb binding with clear cover",
+      "is_active": true,
+      "id": "srv-1789642260566-7qouv4",
+      "created_at": "2026-09-17T10:51:00.566Z"
     }
   ],
   "print_jobs": [
@@ -1045,6 +1333,71 @@
     }
   ],
   "audit_logs": [
+    {
+      "tenant_id": "tnt-1789642260436-7mclu4",
+      "user_id": "usr-1789642260563-itqc00",
+      "user_email": "kwame.ver@example.com",
+      "role": "owner",
+      "action": "PRINTING_PRESS_REGISTERED",
+      "resource_type": "tenant",
+      "resource_id": "tnt-1789642260436-7mclu4",
+      "details": {
+        "business_name": "Verified Press",
+        "slug": "verified-press"
+      },
+      "ip": "127.0.0.1",
+      "id": "log-1789642260568-857y73",
+      "created_at": "2026-09-17T10:51:00.568Z"
+    },
+    {
+      "tenant_id": "tnt-1789642217606-6qev16",
+      "user_id": "usr-1789642217740-55r6ra",
+      "user_email": "sarah.prod@example.com",
+      "role": "owner",
+      "action": "PRINTING_PRESS_REGISTERED",
+      "resource_type": "tenant",
+      "resource_id": "tnt-1789642217606-6qev16",
+      "details": {
+        "business_name": "Production Press",
+        "slug": "production-press"
+      },
+      "ip": "127.0.0.1",
+      "id": "log-1789642217744-ay3c58",
+      "created_at": "2026-09-17T10:50:17.744Z"
+    },
+    {
+      "tenant_id": "tnt-1789641983457-rjs3oh",
+      "user_id": "usr-1789641983567-pwrz2v",
+      "user_email": "testacme@example.com",
+      "role": "owner",
+      "action": "PRINTING_PRESS_REGISTERED",
+      "resource_type": "tenant",
+      "resource_id": "tnt-1789641983457-rjs3oh",
+      "details": {
+        "business_name": "Acme Print",
+        "slug": "acme-print"
+      },
+      "ip": "127.0.0.1",
+      "id": "log-1789641983571-hqhp1v",
+      "created_at": "2026-09-17T10:46:23.571Z"
+    },
+    {
+      "tenant_id": "tnt-1789641587683-bjstg3",
+      "user_id": "usr-1789641587829-c72vos",
+      "user_email": "mps123@gmail.com",
+      "role": "owner",
+      "action": "PRINTING_PRESS_REGISTERED",
+      "resource_type": "tenant",
+      "resource_id": "tnt-1789641587683-bjstg3",
+      "details": {
+        "business_name": "MPS",
+        "slug": "mps",
+        "location": "Sunyani"
+      },
+      "ip": "127.0.0.1",
+      "id": "log-1789641587832-4vxxm6",
+      "created_at": "2026-09-17T10:39:47.832Z"
+    },
     {
       "tenant_id": "tnt-1789424429186-xl8nfl",
       "user_id": "usr-1789425006939-4s7e0o",

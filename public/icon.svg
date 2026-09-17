@@ -1,69 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <!-- Background Soft Glow -->
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0284c7" flood-opacity="0.25"/>
-    </filter>
-    
-    <!-- Primary P Blue Gradient -->
-    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0284c7" />
-      <stop offset="50%" stop-color="#2563eb" />
-      <stop offset="100%" stop-color="#1e3a8a" />
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#9333ea" />
     </linearGradient>
-
-    <!-- Magenta Top Leaf Sheet -->
-    <linearGradient id="leafMagenta" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fb7185" />
-      <stop offset="100%" stop-color="#e11d48" />
-    </linearGradient>
-
-    <!-- Amber Gold Middle Leaf Sheet -->
-    <linearGradient id="leafAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fcd34d" />
-      <stop offset="100%" stop-color="#f59e0b" />
-    </linearGradient>
-
-    <!-- Cyan Blue Bottom Leaf Sheet -->
-    <linearGradient id="leafCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="100%" stop-color="#0284c7" />
-    </linearGradient>
-
-    <!-- Inner Document Gradient -->
-    <linearGradient id="docGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
     </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
   </defs>
+  <!-- Background with subtle squircle -->
+  <rect width="512" height="512" rx="108" fill="url(#grad1)" />
+  
+  <!-- Outer Glow Ring -->
+  <rect x="24" y="24" width="464" height="464" rx="92" fill="none" stroke="#ffffff" stroke-width="4" stroke-opacity="0.15" />
 
+  <!-- Printer Device Silhouette -->
   <g filter="url(#shadow)">
-    <!-- 3 Fanning Paper Sheets on Left -->
-    <!-- Sheet 1: Magenta (Top) -->
-    <path d="M 210 200 C 180 200 150 215 136 230 C 146 255 180 270 216 270 C 235 250 235 220 210 200 Z" fill="url(#leafMagenta)"/>
+    <!-- Paper Sheet Coming Out (Top) -->
+    <path d="M168 96 h176 a12 12 0 0 1 12 12 v92 h-200 v-92 a12 12 0 0 1 12 -12 z" fill="url(#paperGrad)" stroke="#cbd5e1" stroke-width="3"/>
+    
+    <!-- Paper Sheet Document Lines -->
+    <rect x="196" y="128" width="80" height="8" rx="4" fill="#3b82f6" />
+    <rect x="196" y="148" width="120" height="6" rx="3" fill="#94a3b8" />
+    <rect x="196" y="164" width="100" height="6" rx="3" fill="#cbd5e1" />
 
-    <!-- Sheet 2: Gold (Middle) -->
-    <path d="M 200 235 C 160 235 125 255 110 278 C 122 305 162 320 205 315 C 220 290 220 260 200 235 Z" fill="url(#leafAmber)"/>
-
-    <!-- Sheet 3: Cyan (Bottom) -->
-    <path d="M 195 285 C 148 290 115 320 105 348 C 122 375 168 385 212 372 C 222 342 215 310 195 285 Z" fill="url(#leafCyan)"/>
-
-    <!-- Main Stylized Letter P -->
-    <path d="M 200 80 L 330 80 C 395 80 440 125 440 190 C 440 255 395 300 330 300 L 265 300 L 255 390 C 252 415 240 435 220 442 C 200 448 180 436 175 410 L 175 105 C 175 91 186 80 200 80 Z" fill="url(#pGrad)"/>
-
-    <!-- White Document Inside P Loop -->
-    <g transform="translate(230, 115)">
-      <!-- Document Outline with Folded Corner -->
-      <path d="M 12 0 L 80 0 L 115 35 L 115 125 C 115 132 109 138 102 138 L 12 138 C 5 138 0 132 0 125 L 0 12 C 0 5 5 0 12 0 Z" fill="url(#docGrad)"/>
-      
-      <!-- Folded Dog-Ear Corner -->
-      <path d="M 80 0 L 80 35 L 115 35 Z" fill="#cbd5e1"/>
-      <path d="M 80 0 L 80 30 C 80 33 82 35 85 35 L 115 35 Z" fill="#94a3b8"/>
-
-      <!-- Text Lines on Document -->
-      <rect x="20" y="45" width="55" height="10" rx="5" fill="#0284c7"/>
-      <rect x="20" y="65" width="75" height="8" rx="4" fill="#3b82f6"/>
-      <rect x="20" y="83" width="60" height="8" rx="4" fill="#38bdf8"/>
-    </g>
+    <!-- Printer Main Chassis -->
+    <path d="M112 192 h288 a24 24 0 0 1 24 24 v128 a24 24 0 0 1 -24 24 h-288 a24 24 0 0 1 -24 -24 v-128 a24 24 0 0 1 24 -24 z" fill="#1e1b4b" stroke="#6366f1" stroke-width="4" />
+    
+    <!-- Printer Front Panel Glow -->
+    <rect x="144" y="248" width="224" height="68" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2" />
+    
+    <!-- Status LED and Buttons -->
+    <circle cx="388" cy="232" r="7" fill="#10b981" />
+    <circle cx="364" cy="232" r="5" fill="#38bdf8" />
+    
+    <!-- Printed Document Output Tray / Paper Coming Down -->
+    <path d="M160 276 h192 v96 a12 12 0 0 1 -12 12 h-168 a12 12 0 0 1 -12 -12 v-96 z" fill="#ffffff" stroke="#cbd5e1" stroke-width="3" />
+    
+    <!-- Printed Content on Output Paper -->
+    <rect x="188" y="300" width="136" height="8" rx="4" fill="#7c3aed" />
+    <rect x="188" y="318" width="100" height="6" rx="3" fill="#3b82f6" />
+    <rect x="188" y="334" width="124" height="6" rx="3" fill="#10b981" />
+    <rect x="188" y="350" width="80" height="6" rx="3" fill="#f59e0b" />
+  </g>
+  
+  <!-- "P" Badge in bottom right corner -->
+  <g transform="translate(340, 340)" filter="url(#shadow)">
+    <circle cx="56" cy="56" r="48" fill="#10b981" stroke="#ffffff" stroke-width="4" />
+    <text x="56" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle">PF</text>
   </g>
 </svg>

@@ -85,149 +85,162 @@ router.post('/login', (req: Request, res: Response) => {
 // POST /api/auth/register-press
 // Onboarding flow for new printing press
 router.post('/register-press', (req: Request, res: Response) => {
-  const {
-    business_name,
-    owner_name,
-    email,
-    password,
-    phone,
-    location,
-    address,
-    description,
-    operating_hours,
-  } = req.body;
+  try {
+    const {
+      business_name,
+      owner_name,
+      email,
+      password,
+      phone,
+      location,
+      address,
+      description,
+      operating_hours,
+    } = req.body || {};
 
-  if (!business_name || !owner_name || !email || !password || !phone) {
-    res.status(400).json({ error: 'Business name, owner name, email, password, and phone number are required.' });
-    return;
-  }
+    if (!business_name || !owner_name || !email || !password || !phone) {
+      res.status(400).json({ error: 'Business name, owner name, email, password, and phone number are required.' });
+      return;
+    }
 
-  // Check if email already exists
-  const existingUser = db.getUserByEmail(email);
-  if (existingUser) {
-    res.status(409).json({ error: 'A user account with this email already exists.' });
-    return;
-  }
+    const cleanEmail = String(email).toLowerCase().trim();
+    if (!cleanEmail.includes('@') || !cleanEmail.includes('.')) {
+      res.status(400).json({ error: 'Please enter a valid business email address.' });
+      return;
+    }
 
-  // Generate unique slug from business name
-  let baseSlug = business_name
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  if (!baseSlug) baseSlug = 'print-shop';
+    // Check if email already exists
+    const existingUser = db.getUserByEmail(cleanEmail);
+    if (existingUser) {
+      res.status(409).json({ error: 'A user account with this email already exists. Please log in or use another email.' });
+      return;
+    }
 
-  let slug = baseSlug;
-  let counter = 1;
-  while (db.getTenantBySlug(slug)) {
-    slug = `${baseSlug}-${counter}`;
-    counter++;
-  }
+    // Generate unique slug from business name
+    let baseSlug = String(business_name)
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    if (!baseSlug) baseSlug = 'print-shop';
 
-  // Create Tenant (Status: active for immediate access)
-  const tenant = db.createTenant({
-    slug,
-    name: business_name,
-    owner_name,
-    email,
-    phone,
-    location: location || 'Ghana',
-    address: address || '',
-    description: description || 'Digital and offset printing services',
-    logo_url: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80',
-    status: 'active',
-    plan_id: 'free',
-    settings: {
-      currency: 'GHS',
-      currency_symbol: 'GH₵',
-      operating_hours: operating_hours || 'Monday – Saturday: 8:00 AM – 7:00 PM',
-      pay_at_shop_enabled: true,
-      online_payment_enabled: false,
-      payment_provider: 'paystack',
-      document_retention_days: 14,
-      max_file_size_mb: 25,
-      allow_notes: true,
-    },
-  });
+    let slug = baseSlug;
+    let counter = 1;
+    while (db.getTenantBySlug(slug)) {
+      slug = `${baseSlug}-${counter}`;
+      counter++;
+    }
 
-  // Create Owner User Account
-  const passwordHash = bcrypt.hashSync(password, 10);
-  const user = db.createUser({
-    tenant_id: tenant.id,
-    role: 'owner',
-    name: owner_name,
-    email,
-    password_hash: passwordHash,
-    phone,
-    status: 'active',
-  });
+    // Create Tenant (Status: active for immediate access)
+    const tenant = db.createTenant({
+      slug,
+      name: String(business_name).trim(),
+      owner_name: String(owner_name).trim(),
+      email: cleanEmail,
+      phone: String(phone).trim(),
+      location: location ? String(location).trim() : 'Ghana',
+      address: address ? String(address).trim() : '',
+      description: description ? String(description).trim() : 'Digital and offset printing services',
+      logo_url: 'https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=150&auto=format&fit=crop&q=80',
+      status: 'active',
+      plan_id: 'free',
+      settings: {
+        currency: 'GHS',
+        currency_symbol: 'GH₵',
+        operating_hours: operating_hours ? String(operating_hours).trim() : 'Monday – Saturday: 8:00 AM – 7:00 PM',
+        pay_at_shop_enabled: true,
+        online_payment_enabled: false,
+        payment_provider: 'paystack',
+        document_retention_days: 14,
+        max_file_size_mb: 25,
+        allow_notes: true,
+      },
+    });
 
-  // Add default baseline services for the new press
-  db.createService({
-    tenant_id: tenant.id,
-    name: 'A4 Black & White Printing',
-    category: 'printing',
-    unit_type: 'per_page',
-    price: 0.50,
-    description: 'Standard monochrome 80gsm printing',
-    is_active: true,
-  });
+    // Create Owner User Account
+    const passwordHash = bcrypt.hashSync(String(password), 10);
+    const user = db.createUser({
+      tenant_id: tenant.id,
+      role: 'owner',
+      name: String(owner_name).trim(),
+      email: cleanEmail,
+      password_hash: passwordHash,
+      phone: String(phone).trim(),
+      status: 'active',
+    });
 
-  db.createService({
-    tenant_id: tenant.id,
-    name: 'A4 Colour Printing',
-    category: 'printing',
-    unit_type: 'per_page',
-    price: 2.00,
-    description: 'Full color digital laser print',
-    is_active: true,
-  });
+    // Add default baseline services for the new press
+    db.createService({
+      tenant_id: tenant.id,
+      name: 'A4 Black & White Printing',
+      category: 'printing',
+      unit_type: 'per_page',
+      price: 0.50,
+      description: 'Standard monochrome 80gsm printing',
+      is_active: true,
+    });
 
-  db.createService({
-    tenant_id: tenant.id,
-    name: 'Plastic Comb Binding',
-    category: 'finishing',
-    unit_type: 'per_document',
-    price: 8.00,
-    description: 'Comb binding with clear cover',
-    is_active: true,
-  });
+    db.createService({
+      tenant_id: tenant.id,
+      name: 'A4 Colour Printing',
+      category: 'printing',
+      unit_type: 'per_page',
+      price: 2.00,
+      description: 'Full color digital laser print',
+      is_active: true,
+    });
 
-  // Log registration
-  db.addAuditLog({
-    tenant_id: tenant.id,
-    user_id: user.id,
-    user_email: user.email,
-    role: 'owner',
-    action: 'PRINTING_PRESS_REGISTERED',
-    resource_type: 'tenant',
-    resource_id: tenant.id,
-    details: { business_name, slug, location },
-    ip: req.ip,
-  });
+    db.createService({
+      tenant_id: tenant.id,
+      name: 'Plastic Comb Binding',
+      category: 'finishing',
+      unit_type: 'per_document',
+      price: 8.00,
+      description: 'Comb binding with clear cover',
+      is_active: true,
+    });
 
-  const token = generateToken({
-    id: user.id,
-    tenant_id: tenant.id,
-    role: user.role,
-    name: user.name,
-    email: user.email,
-  });
+    // Log registration
+    db.addAuditLog({
+      tenant_id: tenant.id,
+      user_id: user.id,
+      user_email: user.email,
+      role: 'owner',
+      action: 'PRINTING_PRESS_REGISTERED',
+      resource_type: 'tenant',
+      resource_id: tenant.id,
+      details: { business_name, slug, location },
+      ip: req.ip,
+    });
 
-  res.status(201).json({
-    message: 'Printing press registered successfully! Your private dashboard is ready.',
-    token,
-    user: {
+    const token = generateToken({
       id: user.id,
+      tenant_id: tenant.id,
+      role: user.role,
       name: user.name,
       email: user.email,
-      role: user.role,
-      phone: user.phone,
-      tenant_id: user.tenant_id,
-    },
-    tenant,
-    dashboard_url: `/?portal=${tenant.slug}`,
-  });
+    });
+
+    res.status(201).json({
+      message: 'Printing press registered successfully! Your private dashboard is ready.',
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        phone: user.phone,
+        tenant_id: user.tenant_id,
+      },
+      tenant,
+      dashboard_url: `/?portal=${tenant.slug}`,
+    });
+  } catch (err: any) {
+    console.error('[Auth Error] Error during printing press registration:', err);
+    res.status(500).json({
+      error: err?.message || 'An unexpected error occurred during company registration. Please try again.',
+    });
+  }
 });
 
 // GET /api/auth/me
